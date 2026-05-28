@@ -41,13 +41,7 @@ export function initTelegramBot(): Telegraf | null {
     try {
       await ctx.sendChatAction("typing");
 
-      const startTime = Date.now();
       const replyMessage = await handleUserMessage(chatId, text);
-      const elapsed = Date.now() - startTime;
-      const minDelay = 1500;
-      if (elapsed < minDelay) {
-        await new Promise((resolve) => setTimeout(resolve, minDelay - elapsed));
-      }
 
       const metadataRegex = /\[METADATA:\s*image=(.*?)\s*\|\s*slug=(.*?)\s*\|\s*name=(.*?)\]/i;
       const match = replyMessage.match(metadataRegex);

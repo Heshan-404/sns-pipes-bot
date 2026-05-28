@@ -31,17 +31,18 @@ export async function handleUserMessage(userId: string, incomingMessage: string)
       return gratitudeReply;
     }
 
-    const history = await db
-      .select({
-        role: chatSessions.role,
-        content: chatSessions.content,
-      })
-      .from(chatSessions)
-      .where(eq(chatSessions.userId, userId))
-      .orderBy(asc(chatSessions.createdAt))
-      .limit(10);
-
-    const intent = await classifyIntent(trimmedMessage);
+    const [history, intent] = await Promise.all([
+      db
+        .select({
+          role: chatSessions.role,
+          content: chatSessions.content,
+        })
+        .from(chatSessions)
+        .where(eq(chatSessions.userId, userId))
+        .orderBy(asc(chatSessions.createdAt))
+        .limit(10),
+      classifyIntent(trimmedMessage),
+    ]);
 
     if (intent === "GREETING") {
       const hasHistory = history.length > 0;
