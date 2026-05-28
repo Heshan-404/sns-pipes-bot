@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "@neondatabase/serverless": "^0.10.4",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.10",
     "pg": "^8.11.5",

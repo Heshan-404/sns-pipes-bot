@@ -9,7 +9,7 @@ export default async function handler(req: any, res: any) {
         res.status(500).send("Bot not initialized");
         return;
       }
-      await bot.handleUpdate(req.body, res);
+      await bot.handleUpdate(req.body);
       if (!res.writableEnded) {
         res.status(200).send("OK");
       }
