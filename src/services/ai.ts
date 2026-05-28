@@ -8,7 +8,11 @@ const STRICTOR_DENIAL_PHRASE =
 
 const SIMILARITY_THRESHOLD = 0.50;
 
-const GRATITUDE = ["thanks", "thank you", "ty", "cheers", "appreciate it"];
+const GRATITUDE = [
+  "thanks", "thank you", "ty", "cheers", "appreciate it",
+  "sthuthi", "bohoma sthuthi", "thx", "thanks machan", "thanx",
+  "ස්තුතියි", "බොහොම ස්තුතියි"
+];
 
 function isGratitude(text: string): boolean {
   const clean = text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").trim();
@@ -23,7 +27,13 @@ export async function handleUserMessage(userId: string, incomingMessage: string)
     }
 
     if (isGratitude(trimmedMessage)) {
-      const gratitudeReply = "You're welcome! Let me know if you need anything else.";
+      const lower = trimmedMessage.toLowerCase();
+      let gratitudeReply = "You're welcome! Let me know if you need anything else.";
+      if (trimmedMessage.includes("ස්තුතියි")) {
+        gratitudeReply = "ඔබට ස්තුතියි! ඔබට වෙනත් ඕනෑම දෙයක් දැනගැනීමට අවශ්‍ය නම් මට කියන්න.";
+      } else if (lower.includes("sthuthi")) {
+        gratitudeReply = "Oyata sthuthi! Thawa monawa hari danaganna one nam kiyanna.";
+      }
       await db.insert(chatSessions).values([
         { userId, role: "user", content: trimmedMessage },
         { userId, role: "model", content: gratitudeReply },
@@ -44,11 +54,23 @@ export async function handleUserMessage(userId: string, incomingMessage: string)
       classifyIntent(trimmedMessage),
     ]);
 
-    if (intent === "GREETING") {
+    if (intent.startsWith("GREETING")) {
       const hasHistory = history.length > 0;
-      const greetingReply = hasHistory
-        ? "Welcome back! What else can I check for you regarding our IFAN stocks?"
-        : "Hello! Welcome to SNS Pipes & Fittings. How can I help you with our premium IFAN PP-R pipes, fittings, or tools today?";
+      let greetingReply = "";
+
+      if (intent === "GREETING_SI") {
+        greetingReply = hasHistory
+          ? "නැවතත් සාදරයෙන් පිළිගනිමු! අපගේ IFAN නිෂ්පාදන තොග පිළිබඳව ඔබට තවදුරටත් දැනගත යුත්තේ කුමක්ද?"
+          : "ආයුබෝවන්! SNS Pipes & Fittings වෙත සාදරයෙන් පිළිගනිමු. අපගේ උසස් තත්ත්වයේ IFAN PPR බට, සවි කිරීම් (fittings) හෝ මෙවලම් පිළිබඳව ඔබට අද උපකාර කරන්නේ කෙසේද?";
+      } else if (intent === "GREETING_SINGLISH") {
+        greetingReply = hasHistory
+          ? "Welcome back! Apage IFAN products gana thawa monawada oyata danaganna one?"
+          : "Hello! SNS Pipes & Fittings walata sadarayen piligannawa. Ape premium IFAN PPR pipes, fittings, nathnam tools gana oyata ada kohomada udaw karanna one?";
+      } else {
+        greetingReply = hasHistory
+          ? "Welcome back! What else can I check for you regarding our IFAN stocks?"
+          : "Hello! Welcome to SNS Pipes & Fittings. How can I help you with our premium IFAN PP-R pipes, fittings, or tools today?";
+      }
 
       await db.insert(chatSessions).values([
         { userId, role: "user", content: trimmedMessage },
@@ -65,7 +87,7 @@ export async function handleUserMessage(userId: string, incomingMessage: string)
       return STRICTOR_DENIAL_PHRASE;
     }
 
-    const searchTarget = history.length > 0 ? await rewriteQuery(trimmedMessage, history) : trimmedMessage;
+    const searchTarget = await rewriteQuery(trimmedMessage, history);
     if (searchTarget !== trimmedMessage) {
       console.log(`[RAG Query Rewrite] Original: "${trimmedMessage}" -> Standalone: "${searchTarget}"`);
     }
