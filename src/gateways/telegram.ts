@@ -43,23 +43,36 @@ export function initTelegramBot(): Telegraf | null {
 
       const replyMessage = await handleUserMessage(chatId, text);
 
-      const metadataRegex = /\[METADATA:\s*image=(.*?)\s*\|\s*slug=(.*?)\s*\|\s*name=(.*?)\]/i;
-      const match = replyMessage.match(metadataRegex);
+      const metadataRegexGlobal = /\[METADATA:\s*image=(.*?)\s*\|\s*slug=(.*?)\s*\|\s*name=(.*?)\]/gi;
+      const matches = Array.from(replyMessage.matchAll(metadataRegexGlobal));
 
       const isGreetingOrWelcome = replyMessage.includes("Welcome to SNS Pipes & Fittings") || replyMessage.includes("Welcome back!");
 
-      if (match) {
-        const imageUrl = match[1].trim();
-        const slug = match[2].trim();
-        const captionText = replyMessage.replace(metadataRegex, "").trim();
+      if (matches.length > 0) {
+        let lastIndex = 0;
+        for (let i = 0; i < matches.length; i++) {
+          const match = matches[i];
+          const fullMatchStr = match[0];
+          const imageUrl = match[1].trim();
+          const slug = match[2].trim();
+          const matchIndex = match.index || 0;
 
-        await ctx.replyWithPhoto(imageUrl, {
-          caption: captionText,
-          parse_mode: "Markdown",
-          ...Markup.inlineKeyboard([
-            Markup.button.url("View on Website", `https://snspipes.com/products/detail/?slug=${slug}`),
-          ]),
-        });
+          let sectionText = replyMessage.slice(lastIndex, matchIndex).trim();
+          lastIndex = matchIndex + fullMatchStr.length;
+
+          await ctx.replyWithPhoto(imageUrl, {
+            caption: sectionText,
+            parse_mode: "Markdown",
+            ...Markup.inlineKeyboard([
+              Markup.button.url("View on Website", `https://snspipes.com/products/detail/?slug=${slug}`),
+            ]),
+          });
+        }
+
+        const trailingText = replyMessage.slice(lastIndex).trim();
+        if (trailingText) {
+          await ctx.reply(trailingText, { parse_mode: "Markdown" });
+        }
       } else if (isGreetingOrWelcome) {
         await ctx.reply(replyMessage, {
           parse_mode: "Markdown",
