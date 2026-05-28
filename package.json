@@ -1,0 +1,32 @@
+{
+  "name": "wolt-ai-agent",
+  "version": "1.0.0",
+  "description": "Decoupled AI Chat Agent with Custom RAG Engine",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "ingest": "tsx src/scripts/ingest.ts",
+    "reset": "tsx src/scripts/reset.ts",
+    "reset:ingest": "tsx src/scripts/reset.ts && tsx src/scripts/ingest.ts",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "test:embeddings": "tsx src/tests/test-embeddings.ts",
+    "test:ai": "tsx src/tests/test-ai.ts"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.30.10",
+    "pg": "^8.11.5",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/pg": "^8.11.6",
+    "drizzle-kit": "^0.21.4",
+    "tsx": "^4.10.5",
+    "typescript": "^5.4.5"
+  }
+}

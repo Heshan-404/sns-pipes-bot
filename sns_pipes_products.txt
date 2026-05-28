@@ -1,0 +1,99 @@
+================================================================================
+                     SNS PIPES & FITTINGS - PRODUCT CATALOG
+                       Premium Quality Pipes, Fittings & Tools
+                         Website: https://snspipes.com
+================================================================================
+
+This catalog contains the product listings available at SNS Pipes & Fittings.
+All products listed below are sourced from trusted brands and are suitable for
+professional plumbing, construction, and hardware applications.
+
+--------------------------------------------------------------------------------
+
+CATEGORY: Hot Water
+--------------------------------------------------------------------------------
+
+PRODUCT #1
+Name         : PP-R HOT MACHINE (IFAN PLUS-119)
+Short Name   : PP-R HOT MACHINE
+Brand        : IFAN
+Category     : Hot Water
+Description  : The PP-R HOT MACHINE (IFAN PLUS-119) is a professional-grade
+               welding machine designed for fusing PP-R pipes and fittings. It
+               is ideal for hot water plumbing installations. The machine
+               delivers consistent heat for strong, leak-free joints.
+Available Sizes:
+  - 50-125MM (Code: IFPP183)
+Images:
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/pp_r_hot_machine_ifan_plus_119_1_2016.webp (Main)
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/pp_r_hot_machine_ifan_plus_119_2_2017.webp
+
+--------------------------------------------------------------------------------
+
+PRODUCT #2
+Name         : MOLD FOR MACHINE
+Short Name   : MOLD
+Brand        : IFAN
+Category     : Hot Water
+Description  : The Mold for PP-R Machine is a precision-engineered die set used
+               with PP-R pipe welding machines. Available in multiple sizes, it
+               ensures accurate and clean fusion of pipe joints. Suitable for
+               residential and commercial hot water plumbing systems.
+Available Sizes:
+  - 20MM (Code: IFPP115)
+  - 25MM (Code: IFPP116)
+  - 32MM (Code: IFPP117)
+  - 40MM (Code: IFPP227)
+  - 50MM (Code: IFPP118)
+  - 63MM (Code: IFPP228)
+Images:
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/mold_for_machine_1_2803.webp (Main)
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/mold_for_machine_2_2807.webp
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/mold_for_machine_3_2807.webp
+
+--------------------------------------------------------------------------------
+
+PRODUCT #3
+Name         : PP-R TEST MACHINE BIG (131)
+Short Name   : PP-R TEST MACHINE BIG (131)
+Brand        : IFAN
+Category     : Hot Water
+Description  : The PP-R Test Machine Big (131) is a heavy-duty pressure testing
+               device used to verify the integrity of PP-R pipe installations.
+               It is used to detect leaks and ensure that pipe systems meet
+               pressure requirements before commissioning. Ideal for large-scale
+               plumbing projects.
+Available Sizes: N/A
+Images:
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/pp_r_test_machine_big_131_1_0624.webp (Main)
+
+--------------------------------------------------------------------------------
+
+PRODUCT #4
+Name         : TOOL FOR PP-R PIPE REPAIR
+Short Name   : PP-R TOOL
+Brand        : IFAN
+Category     : Hot Water
+Item Code    : IFPP148
+Description  : The Tool for PP-R Pipe Repair is a specialized hand tool designed
+               for cutting, trimming, and repairing PP-R pipes on-site. It is
+               compact, durable, and easy to use, making it an essential
+               accessory for any plumber or technician working with PP-R
+               piping systems.
+Available Sizes: N/A
+Images:
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/tool_for_pp_r_pipe_repair_1_3036.webp (Main)
+  - https://4oe0bqgokt27fgzu.public.blob.vercel-storage.com/tool_for_pp_r_pipe_repair_2_3038.webp
+
+--------------------------------------------------------------------------------
+
+TOTAL PRODUCTS LISTED  : 4
+TOTAL PAGES            : 1
+PRODUCTS PER PAGE      : 12
+
+================================================================================
+             For inquiries, contact SNS Pipes & Fittings:
+             Phone  : 0762040059
+             Email  : contact@snspipes.com
+             Website: https://snspipes.com
+================================================================================
